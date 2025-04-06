@@ -33,7 +33,7 @@ This project is ideal for Flutter beginners and mobile developers looking to imp
 📽️ [Watch Demo on YouTube Shorts](https://youtube.com/shorts/XmmvJWN5ni8?feature=shared)
 
 
-> _This demo shows the theme toggle, splash screen, and interactive calculations._
+> _This demo shows the theme toggle.
 
 ---
 

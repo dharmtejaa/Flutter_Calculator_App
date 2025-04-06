@@ -1,4 +1,4 @@
-import 'package:calculator/custome_widgets/button.dart'; // Import custom button widget.
+import 'package:calculator/custom_widgets/button.dart'; // Import custom button widget.
 import 'package:calculator/splash_screen/splash_screen.dart'; // Import Splash Screen
 import 'package:calculator/theme/theme.dart'; // Import theme provider and themes.
 import 'package:flutter/material.dart'; // Import Flutter's Material Design library.

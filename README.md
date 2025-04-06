@@ -23,7 +23,19 @@ This project is ideal for Flutter beginners and mobile developers looking to imp
 |------------|-----------|
 | ![image alt](https://github.com/dharmtejaa/Flutter_Calculator_App/blob/08a50ebc131ce7bf496e3a97981ac2fb96af2829/assets/output/light_mode.jpg) | ![image alt](https://github.com/dharmtejaa/Flutter_Calculator_App/blob/08a50ebc131ce7bf496e3a97981ac2fb96af2829/assets/output/dark_mode.jpg) |
 
-> _You can add your screenshots to an `/assets/screenshots/` folder and link them here._
+---
+
+---
+
+## 🎥 Demo
+
+
+|--------|
+| ▶️ [Watch Demo Video](assets/output/calculator_output.mp4)
+
+|
+
+> _This demo shows the theme toggle, splash screen, and interactive calculations._
 
 ---
 

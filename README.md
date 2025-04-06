@@ -32,8 +32,10 @@ This project is ideal for Flutter beginners and mobile developers looking to imp
 ```
 lib/
 ├── main.dart               # App logic & UI
-├── button.dart             # Custom calculator buttons
-├── constants.dart          # Color & style constants
+├── components              
+│   └── constants.dart      # Color & style constants
+├── custom_widgets         
+│   └── button.dart         # Custom calculator buttons
 ├── theme/
 │   └── theme.dart          # Theme toggle and management
 ├── splash_screen/

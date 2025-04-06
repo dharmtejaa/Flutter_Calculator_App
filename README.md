@@ -21,7 +21,7 @@ This project is ideal for Flutter beginners and mobile developers looking to imp
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| *(Add light mode screenshot)* | *(Add dark mode screenshot)* |
+| ![image alt](https://github.com/dharmtejaa/Flutter_Calculator_App/blob/08a50ebc131ce7bf496e3a97981ac2fb96af2829/assets/output/light_mode.jpg) | ![image alt](https://github.com/dharmtejaa/Flutter_Calculator_App/blob/08a50ebc131ce7bf496e3a97981ac2fb96af2829/assets/output/dark_mode.jpg) |
 
 > _You can add your screenshots to an `/assets/screenshots/` folder and link them here._
 

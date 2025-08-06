@@ -1,10 +1,9 @@
-import 'package:calculator/components/constants.dart';
+import 'package:calculator/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 //light theme mode
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
-
   colorScheme: ColorScheme.light(
     // ignore: deprecated_member_use
     background: Colors.white,

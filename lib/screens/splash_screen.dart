@@ -1,6 +1,5 @@
-//import 'package:estetica/onboard.dart';
 import 'dart:async';
-import 'package:calculator/main.dart';
+import 'package:calculator/screens/calculator_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => MyHomePage()),
+        MaterialPageRoute(builder: (context) => CalculatorScreen()),
       );
     });
   }

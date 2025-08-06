@@ -56,6 +56,7 @@ class CalculatorProvider with ChangeNotifier {
   void evaluate() {
     try {
       String finalInput = _userInput.replaceAll('x', '*');
+      // ignore: deprecated_member_use
       Expression expression = Parser().parse(finalInput);
       ContextModel contextModel = ContextModel();
       double evalResult = expression.evaluate(

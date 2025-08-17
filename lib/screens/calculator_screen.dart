@@ -70,13 +70,6 @@ class CalculatorScreen extends StatelessWidget {
   Widget _buildDisplay(BuildContext context) {
     return Consumer<CalculatorProvider>(
       builder: (context, calculatorProvider, child) {
-        // Check if secret code was entered
-        if (calculatorProvider.isSecretCodeEntered) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _navigateToLogin(context);
-          });
-        }
-
         return Flexible(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -107,20 +100,6 @@ class CalculatorScreen extends StatelessWidget {
         );
       },
     );
-  }
-
-  void _navigateToLogin(BuildContext context) {
-    // Check if user is already authenticated
-
-    // Reset the secret code flag to prevent repeated navigation
-    final calculatorProvider = Provider.of<CalculatorProvider>(
-      context,
-      listen: false,
-    );
-
-    // Set the chat provider reference in calculator provider
-
-    calculatorProvider.resetSecretCodeFlag();
   }
 
   Widget _buildDivider(BuildContext context) {

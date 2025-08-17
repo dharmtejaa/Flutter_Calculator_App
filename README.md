@@ -1,197 +1,136 @@
 # Calculator App
 
-A modern Flutter calculator application with clean architecture, Provider state management, and beautiful UI design.
+A Flutter calculator app with a secret chat feature.
 
-## 🚀 Features
+## Features
 
-- **Modern Calculator Interface**: Clean and intuitive design with smooth animations
-- **Dark/Light Theme**: Toggle between dark and light themes with animated transitions
-- **Advanced Operations**: Support for basic arithmetic operations (+, -, ×, ÷, ^, %)
-- **Real-time Calculation**: Instant evaluation of mathematical expressions
-- **Responsive Design**: Adapts to different screen sizes
-- **Provider State Management**: Clean separation of concerns using Provider pattern
-- **Splash Screen**: Beautiful loading screen with app branding
+- Basic calculator functionality
+- Dark/Light theme support
+- Secret chat feature (accessible via secret code)
+- Google Sign-In authentication
+- Real-time messaging with Firebase
 
-## 🚀 Features
+## Chat Performance Optimizations
 
-The app includes:
-- **Splash Screen**: App logo and branding
-- **Calculator Screen**: Main calculator interface with theme toggle
+The chat screen has been optimized for better performance and faster message delivery:
 
----
+### UI Optimizations
+- **Message Caching**: Messages are cached to prevent unnecessary rebuilds
+- **Optimized ListView**: Added `cacheExtent`, `addRepaintBoundaries`, and disabled `addAutomaticKeepAlives`
+- **Debounced Operations**: Scroll events and read status updates are debounced
+- **Optimized Typing Indicator**: Replaced `TweenAnimationBuilder` with `AnimationController` for better performance
 
-## 📸 Screenshots
+### Backend Optimizations
+- **Message Limiting**: Limited to last 50 messages for faster loading
+- **Batched Database Operations**: Read status updates are batched and debounced
+- **Reduced Database Calls**: Optimized typing indicator updates
+- **Memory Management**: Proper cleanup of timers and subscriptions
 
-| Light Mode | Dark Mode |
-|------------|-----------|
-| ![image alt](https://github.com/dharmtejaa/Flutter_Calculator_App/blob/08a50ebc131ce7bf496e3a97981ac2fb96af2829/assets/output/light_mode.jpg) | ![image alt](https://github.com/dharmtejaa/Flutter_Calculator_App/blob/08a50ebc131ce7bf496e3a97981ac2fb96af2829/assets/output/dark_mode.jpg) |
+### Performance Monitoring
+- Real-time performance tracking (messages per second)
+- Automatic cleanup of cached widgets
+- Scroll event debouncing
 
-### State Management
-This project uses **Provider** for state management, eliminating the need for `setState()` calls:
+## Getting Started
 
-- **CalculatorProvider**: Manages calculator state (user input, results, operations)
-- **ThemeProvider**: Manages theme switching between light and dark modes
+1. Clone the repository
+2. Install dependencies: `flutter pub get`
+3. Configure Firebase (add your `google-services.json`)
+4. Run the app: `flutter run`
 
-## 🎥 Demo
+## Secret Chat Access
 
-#### Providers
-- **CalculatorProvider**: Handles all calculator logic including:
-  - Number input
-  - Operator input
-  - Expression evaluation
-  - Input validation
-  - Result formatting
+To access the secret chat:
+1. Enter the secret code in the calculator
+2. Sign in with an authorized Google account
+3. Start chatting!
 
-- **ThemeProvider**: Manages theme state with:
-  - Light/dark theme switching
-  - Animated theme transitions
-  - Persistent theme state
+## Performance Improvements
 
-#### Screens
-- **SplashScreen**: App introduction with timer-based navigation
-- **CalculatorScreen**: Main calculator interface with:
-  - Theme toggle button
-  - Real-time display
-  - Calculator buttons grid
-  - Responsive layout
+The chat screen now delivers messages significantly faster with:
+- Reduced UI rebuilds
+- Optimized database operations
+- Better memory management
+- Improved scrolling performance
 
-#### Widgets
-- **CustomButton**: Reusable button component with:
-  - Custom styling
-  - Icon support (for delete button)
-  - Consistent theming
+## Setup Instructions
 
-## 🎨 Design Features
+### 1. Firebase Configuration
 
-### Color Scheme
-- **Light Theme**: Clean white background with blue accents
-- **Dark Theme**: Dark background with contrasting elements
-- **Custom Colors**: Defined in `constants/colors.dart`
+1. Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Enable Authentication with Anonymous sign-in
+3. Create a Firestore database
+4. Set up Firestore security rules:
 
-### UI Elements
-- **Rounded Buttons**: Modern circular button design
-- **Animated Theme Toggle**: Smooth rotation animation
-- **Scrollable Display**: Horizontal scrolling for long expressions
-- **Responsive Layout**: Adapts to different screen sizes
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Flutter SDK (3.7.2 or higher)
-- Dart SDK
-- Android Studio / VS Code
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd calculator
-   ```
-
-2. **Install dependencies**
-   ```bash
-   flutter pub get
-   ```
-
-3. **Run the app**
-   ```bash
-   flutter run
-   ```
-
-## 📦 Dependencies
-
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.8
-  math_expressions: ^2.7.0  # Mathematical expression parsing
-  provider: ^6.0.0          # State management
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /secret_chat/{document} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
 ```
 
-## 🔧 Key Features Implementation
+### 2. Update Firebase Configuration
 
-### Calculator Logic
-- **Expression Parsing**: Uses `math_expressions` package for safe evaluation
-- **Input Validation**: Prevents invalid expressions and consecutive operators
-- **Decimal Handling**: Smart decimal point placement
-- **Error Handling**: Graceful handling of invalid expressions
+1. Download your Firebase configuration file:
+   - For Android: `google-services.json` (place in `android/app/`)
 
-### State Management Benefits
-- **No setState()**: All state changes handled through Provider
-- **Reactive UI**: Automatic UI updates when state changes
-- **Separation of Concerns**: Business logic separated from UI
-- **Testability**: Easy to test individual components
+2. Update `lib/firebase_options.dart` with your actual Firebase configuration:
+   - Replace the placeholder values with your actual Firebase configuration
 
-### Theme System
-- **Dynamic Theming**: Runtime theme switching
-- **Animated Transitions**: Smooth theme change animations
-- **Consistent Styling**: All components follow theme colors
+### 3. Install Dependencies
 
-## 🧪 Testing
-
-The project includes basic widget tests:
 ```bash
-flutter test
+flutter pub get
 ```
 
+### 4. Run the Application
 
-## 🔄 Migration from setState to Provider
-
-This project was refactored from using `setState()` to Provider pattern:
-
-### Before (setState approach):
-```dart
-class _MyHomePageState extends State<MyHomePage> {
-  String userInput = '';
-  String result = '';
-  
-  void addNumber(String number) {
-    setState(() {
-      userInput += number;
-    });
-  }
-}
+```bash
+flutter run
 ```
 
-### After (Provider approach):
-```dart
-class CalculatorProvider with ChangeNotifier {
-  String _userInput = '';
-  String _result = '';
-  
-  void addNumber(String number) {
-    _userInput += number;
-    notifyListeners();
-  }
-}
-```
+## Usage
 
-## 🎯 Benefits of the New Architecture
+1. **Calculator Mode**: The app starts as a normal calculator
+2. **Secret Access**: Enter "2000+2004" on the calculator to access the hidden chat
+3. **Chat Interface**: Send messages, use emojis, and execute commands
+4. **Commands Available**:
+   - `:help` - Show available commands
+   - `:clear` - Clear all messages
+   - `:export` - Export chat history
 
-1. **Maintainability**: Clean separation of concerns
-2. **Scalability**: Easy to add new features
-3. **Testability**: Isolated components for testing
-4. **Performance**: Efficient state updates
-5. **Code Reusability**: Shared providers across screens
+## Security Features
 
-## 🤝 Contributing
+- **Message Encryption**: All messages are encrypted using AES encryption
+- **Anonymous Authentication**: No personal information required
+- **Local Key Storage**: Encryption keys stored securely in device preferences
+- **Stealth Mode**: App appears as a legitimate calculator
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+## Technical Details
 
-## 📄 License
+- **Framework**: Flutter (Android-only)
+- **Platform**: Android (API 23+)
+- **Backend**: Firebase (Authentication, Firestore)
+- **Encryption**: AES-256 with local key management
+- **State Management**: Provider pattern
+- **UI**: Material Design with custom themes
 
-This project is licensed under the MIT License.
+## Future Enhancements
 
-## 👨‍💻 Developer
+- Admin broadcast messages
+- Voice note support
+- Stealth notifications
+- Multi-language support
+- File sharing capabilities
 
-**Developer**: @dharmtejaa
+## Disclaimer
 
----
+This application is for educational and legitimate privacy purposes only. Users are responsible for complying with local laws and regulations regarding encrypted communications.
 
-**Note**: This calculator app demonstrates modern Flutter development practices with clean architecture and proper state management using Provider pattern.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

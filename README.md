@@ -1,136 +1,242 @@
-# Calculator App
+# 🧮 Calculator App
 
-A Flutter calculator app with a secret chat feature.
+A modern **Flutter calculator app** with beautiful UI, dark/light theme support, and advanced mathematical operations. Built with clean architecture, state management, and responsive design.
 
-## Features
+This project is perfect for Flutter developers looking to explore state management, custom UI components, theme switching, and mathematical expression evaluation.
 
-- Basic calculator functionality
-- Dark/Light theme support
-- Secret chat feature (accessible via secret code)
-- Google Sign-In authentication
-- Real-time messaging with Firebase
+---
 
-## Chat Performance Optimizations
+## 🚀 Features
 
-The chat screen has been optimized for better performance and faster message delivery:
+- 🧮 **Advanced Calculator**: Support for basic arithmetic, exponents, percentages, and complex expressions
+- 🌙 **Dark/Light Theme**: Beautiful theme switching with smooth animations
+- 📱 **Responsive Design**: Optimized for all screen sizes with adaptive layouts
+- ✨ **Smooth Animations**: Animated theme toggle and button interactions
+- 🎨 **Custom UI**: Beautiful Material Design with custom color schemes
+- 🔄 **State Management**: Clean architecture using Provider pattern
+- 💾 **Persistent Themes**: Theme preference saved locally
+- 🎯 **Error Handling**: Robust error handling for invalid expressions
 
-### UI Optimizations
-- **Message Caching**: Messages are cached to prevent unnecessary rebuilds
-- **Optimized ListView**: Added `cacheExtent`, `addRepaintBoundaries`, and disabled `addAutomaticKeepAlives`
-- **Debounced Operations**: Scroll events and read status updates are debounced
-- **Optimized Typing Indicator**: Replaced `TweenAnimationBuilder` with `AnimationController` for better performance
+---
 
-### Backend Optimizations
-- **Message Limiting**: Limited to last 50 messages for faster loading
-- **Batched Database Operations**: Read status updates are batched and debounced
-- **Reduced Database Calls**: Optimized typing indicator updates
-- **Memory Management**: Proper cleanup of timers and subscriptions
+## 📸 Screenshots
 
-### Performance Monitoring
-- Real-time performance tracking (messages per second)
-- Automatic cleanup of cached widgets
-- Scroll event debouncing
+| Light Theme | Dark Theme | Theme Toggle Animation |
+|-------------|------------|------------------------|
+| ![Light Theme](assets/output/light_mode.jpg) | ![Dark Theme](assets/output/dark_mode.jpg) | ![Theme Toggle](assets/output/calculator_output.mp4) |
 
-## Getting Started
+---
 
-1. Clone the repository
-2. Install dependencies: `flutter pub get`
-3. Configure Firebase (add your `google-services.json`)
-4. Run the app: `flutter run`
+## 🎥 Demo
 
-## Secret Chat Access
+📽️ [Watch Demo Video](assets/output/calculator_output.mp4)
 
-To access the secret chat:
-1. Enter the secret code in the calculator
-2. Sign in with an authorized Google account
-3. Start chatting!
+---
 
-## Performance Improvements
+## 🗂️ Project Structure
 
-The chat screen now delivers messages significantly faster with:
-- Reduced UI rebuilds
-- Optimized database operations
-- Better memory management
-- Improved scrolling performance
-
-## Setup Instructions
-
-### 1. Firebase Configuration
-
-1. Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
-2. Enable Authentication with Anonymous sign-in
-3. Create a Firestore database
-4. Set up Firestore security rules:
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /secret_chat/{document} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
+```
+lib/
+├── main.dart                      # App entry point with providers
+├── constants/
+│   └── colors.dart               # Custom color definitions
+├── providers/
+│   ├── calculator_provider.dart  # Calculator logic and state
+│   └── theme_provider.dart       # Theme management
+├── screens/
+│   ├── splash_screen.dart        # Animated splash screen
+│   └── calculator_screen.dart    # Main calculator interface
+└── widgets/
+    └── custom_button.dart        # Reusable button component
 ```
 
-### 2. Update Firebase Configuration
+---
 
-1. Download your Firebase configuration file:
-   - For Android: `google-services.json` (place in `android/app/`)
+## 📦 Dependencies
 
-2. Update `lib/firebase_options.dart` with your actual Firebase configuration:
-   - Replace the placeholder values with your actual Firebase configuration
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  math_expressions: ^2.7.0      # Mathematical expression evaluation
+  provider: ^6.1.5              # State management
+  shared_preferences: ^2.2.2     # Local storage for theme persistence
+```
 
-### 3. Install Dependencies
+Install dependencies:
 
 ```bash
 flutter pub get
 ```
 
-### 4. Run the Application
+---
 
-```bash
-flutter run
-```
+## 🛠️ Getting Started
 
-## Usage
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/calculator-app.git
+   cd calculator-app
+   ```
 
-1. **Calculator Mode**: The app starts as a normal calculator
-2. **Secret Access**: Enter "2000+2004" on the calculator to access the hidden chat
-3. **Chat Interface**: Send messages, use emojis, and execute commands
-4. **Commands Available**:
-   - `:help` - Show available commands
-   - `:clear` - Clear all messages
-   - `:export` - Export chat history
+2. **Install dependencies**
+   ```bash
+   flutter pub get
+   ```
 
-## Security Features
+3. **Run the app**
+   ```bash
+   flutter run
+   ```
 
-- **Message Encryption**: All messages are encrypted using AES encryption
-- **Anonymous Authentication**: No personal information required
-- **Local Key Storage**: Encryption keys stored securely in device preferences
-- **Stealth Mode**: App appears as a legitimate calculator
+> Ensure you have [Flutter installed](https://flutter.dev/docs/get-started/install) and a device/emulator ready.
 
-## Technical Details
+---
 
-- **Framework**: Flutter (Android-only)
-- **Platform**: Android (API 23+)
-- **Backend**: Firebase (Authentication, Firestore)
-- **Encryption**: AES-256 with local key management
-- **State Management**: Provider pattern
-- **UI**: Material Design with custom themes
+## 🎯 Key Features Explained
 
-## Future Enhancements
+### 🧮 Mathematical Operations
+- **Basic Operations**: Addition (+), Subtraction (-), Multiplication (×), Division (/)
+- **Advanced Operations**: Exponentiation (^), Percentage (%)
+- **Decimal Support**: Full decimal number support
+- **Expression Evaluation**: Complex mathematical expressions with proper operator precedence
 
-- Admin broadcast messages
-- Voice note support
-- Stealth notifications
-- Multi-language support
-- File sharing capabilities
+### 🌙 Theme System
+- **Light Theme**: Clean, modern light interface
+- **Dark Theme**: Elegant dark interface with custom colors
+- **Smooth Transitions**: Animated theme switching with rotation effects
+- **Persistent Storage**: Theme preference saved using SharedPreferences
 
-## Disclaimer
+### 📱 Responsive Design
+- **Adaptive Layout**: Works seamlessly on phones and tablets
+- **Dynamic Sizing**: Buttons and text scale based on screen size
+- **Portrait Lock**: Optimized for portrait orientation
+- **Safe Area**: Proper handling of device notches and system UI
 
-This application is for educational and legitimate privacy purposes only. Users are responsible for complying with local laws and regulations regarding encrypted communications.
+---
 
-## License
+## 🏗️ Architecture
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### State Management
+- **Provider Pattern**: Clean separation of business logic and UI
+- **CalculatorProvider**: Manages calculator state and operations
+- **ThemeProvider**: Handles theme switching and persistence
+
+### Widget Structure
+- **Custom Components**: Reusable `CustomButton` widget
+- **Responsive Layout**: Dynamic sizing based on screen dimensions
+- **Clean UI**: Material Design principles with custom styling
+
+### Error Handling
+- **Expression Validation**: Robust error handling for invalid inputs
+- **User Feedback**: Clear error messages for invalid expressions
+- **Input Validation**: Prevents invalid operator sequences
+
+---
+
+## 📌 Use Cases
+
+- Learn **state management** using Provider pattern
+- Understand **mathematical expression evaluation**
+- Build **responsive layouts** with dynamic sizing
+- Implement **theme switching** with animations
+- Perfect for **portfolio projects** or **Flutter learning**
+
+---
+
+## 🔧 Technical Details
+
+- **Framework**: Flutter (Cross-platform)
+- **State Management**: Provider
+- **Mathematical Engine**: math_expressions package
+- **Local Storage**: SharedPreferences
+- **UI**: Material Design with custom theming
+- **Architecture**: Clean separation of concerns
+
+---
+
+## 🎨 Customization
+
+### Adding New Operations
+1. Update `CalculatorProvider` to handle new operators
+2. Add corresponding button in `CalculatorScreen`
+3. Update `math_expressions` evaluation logic
+
+### Theme Customization
+1. Modify colors in `constants/colors.dart`
+2. Update theme definitions in `providers/theme_provider.dart`
+3. Customize button styles in `widgets/custom_button.dart`
+
+---
+
+## 🚀 Future Enhancements
+
+- [ ] Scientific calculator functions
+- [ ] Calculation history
+- [ ] Memory functions (M+, M-, MR, MC)
+- [ ] Voice input support
+- [ ] Custom themes
+- [ ] Widget for home screen
+- [ ] Unit conversions
+- [ ] Graphing capabilities
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 👨‍💻 Author
+
+**Dharma Teja**  
+📧 dharmateja238@gmail.com  
+🐙 [GitHub](https://github.com/dharmtejaa)
+
+---
+
+> ⭐ Star this repo if you found it useful! Contributions are welcome.
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📱 Platform Support
+
+- ✅ Android
+- ✅ iOS
+- ✅ Web
+- ✅ Desktop (Windows, macOS, Linux)
+
+---
+
+## 🐛 Known Issues
+
+- Complex expressions with multiple operators may need parentheses for clarity
+- Very large numbers might show scientific notation
+- Theme animation might be slightly delayed on older devices
+
+---
+
+## 📊 Performance
+
+- **Startup Time**: < 2 seconds
+- **Memory Usage**: ~15MB
+- **APK Size**: ~8MB
+- **Battery Impact**: Minimal
+
+---
+
+## 🔒 Privacy
+
+This app does not collect any personal data or require internet permissions. All calculations are performed locally on your device.

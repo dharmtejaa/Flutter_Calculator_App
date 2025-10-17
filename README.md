@@ -21,9 +21,9 @@ This project is perfect for Flutter developers looking to explore state manageme
 
 ## 📸 Screenshots
 
-| Light Theme | Dark Theme | Theme Toggle Animation |
-|-------------|------------|------------------------|
-| ![Light Theme](assets/output/light_mode.jpg) | ![Dark Theme](assets/output/dark_mode.jpg) | ![Theme Toggle](assets/output/calculator_output.mp4) |
+| Light Theme | Dark Theme |
+|-------------|------------|
+| ![Light Theme](assets/output/light_mode.jpg) | ![Dark Theme](assets/output/dark_mode.jpg) |
 
 ---
 
@@ -170,19 +170,6 @@ flutter pub get
 
 ---
 
-## 🚀 Future Enhancements
-
-- [ ] Scientific calculator functions
-- [ ] Calculation history
-- [ ] Memory functions (M+, M-, MR, MC)
-- [ ] Voice input support
-- [ ] Custom themes
-- [ ] Widget for home screen
-- [ ] Unit conversions
-- [ ] Graphing capabilities
-
----
-
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
@@ -208,15 +195,6 @@ This project is open source and available under the [MIT License](LICENSE).
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 📱 Platform Support
-
-- ✅ Android
-- ✅ iOS
-- ✅ Web
-- ✅ Desktop (Windows, macOS, Linux)
 
 ---
 
